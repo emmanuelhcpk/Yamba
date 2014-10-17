@@ -1,27 +1,22 @@
 package com.example.emmanuelhcpk.yamba;
 
-import android.app.Activity;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import android.util.Log;
 
-import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.emmanuelhcpk.lib.YambaClient;
-import com.example.emmanuelhcpk.lib.YambaClientException;
+import com.marakana.android.yamba.clientlib.YambaClient;
+import com.marakana.android.yamba.clientlib.YambaClientException;
 
 
 
@@ -48,6 +43,7 @@ public class StatusFragment extends Fragment implements OnClickListener{
         Log.d(TAG, "onClicked with status: " + status);
         new PostTask().execute(status);
     }
+
     private final class PostTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
@@ -60,14 +56,16 @@ public class StatusFragment extends Fragment implements OnClickListener{
                 e.printStackTrace();
                 return "Failed to post to yamba service";
             }
-        }
+        }//fin doinbackground
+
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             Toast.makeText(StatusFragment.this.getActivity(),
                     result, Toast.LENGTH_LONG).show();
-        }
-    }
+        }//fin onpostexecute
+
+    }//fin clase
 
 
 
